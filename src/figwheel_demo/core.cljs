@@ -7,17 +7,21 @@
 
 ;; define your app data so that it doesn't get over-written on reload
 
-(defonce app-state (atom {:text "Hello world!"}))
+(defonce app-state (atom {:text "Hello, world!"}))
 
 (defn my-component []
-  [:div
-   Hello, world!])
+  [:div.panel.panel-default
+   (:text @app-state)])
+
+(defn my-root []
+  [:div.container
+   [my-component]])
 
 ;; specify reload hook with ^;after-load metadata
 (defn ^:after-load on-reload []
   ;; optionally touch your app-state to force rerendering depending on
   ;; your application
-  ;; (swap! app-state update-in [:__figwheel_counter] inc)
-  (r/render [my-component]
-            (.getElementById js/document "app"))
-)
+  (swap! app-state update-in [:__figwheel_counter] inc)
+  (console.log "Reload")
+  (r/render [my-root]
+            (.getElementById js/document "app")))

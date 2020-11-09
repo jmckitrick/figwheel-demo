@@ -8,7 +8,8 @@
 
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.10.339"]
-                 [reagent "0.8.2-SNAPSHOT"]]
+                 [reagent "0.8.2-SNAPSHOT"]
+                 [org.webjars/bootstrap "4.0.0"]]
 
   :source-paths ["src"]
 
